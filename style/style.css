@@ -1,0 +1,30 @@
+body {
+    background: lightcyan;
+}
+
+input[type=submit], .select, p {
+    font-size: 20px;
+}
+
+.form-item {
+    padding-bottom: 25px;
+}
+
+.form-item label {
+    float: left;
+    font-size: 20px;
+}
+
+.form-item input {
+    float: right;
+}
+
+.wrap {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.answer {
+    margin-top: 10px;
+    font-size: 30px;
+}
