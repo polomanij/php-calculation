@@ -1,27 +1,39 @@
 <?php
-function calculate($num1 = 0, $num2 = 0, $sign = "+") {
+function calculate($num1, $num2, $sign) {
     if ($sign === "+")
     {
-        echo "Answer: ".($num1 + $num2);
+        return "Answer: ".($num1 + $num2);
     }
     elseif ($sign === "-")
     {
-        echo "Answer: ".($num1 - $num2);
+        return "Answer: ".($num1 - $num2);
     }
     elseif ($sign === "*")
     {
-        echo "Answer: ".($num1 * $num2);
+        return "Answer: ".($num1 * $num2);
     }
     elseif ($sign === "/")
     {
         if ((int) $num2 === 0)
         {
-            echo "Second number can not be 0";
+            return "Second number can not be 0";
         }
         else
         {
-            echo "Answer: ".($num1 / $num2);
+            return "Answer: ".($num1 / $num2);
         }
+    }
+}
+
+if (isset($_POST["calculate"])) {
+    if ($_POST["num1"] !== "" and $_POST["num2"] !== "") {
+        $num1 = $_POST["num1"];
+        $num2 = $_POST["num2"];
+        $sign = $_POST["sign"];
+
+        $answer = calculate($num1, $num2, $sign);
+    } else {
+        $answer = "You should enter both numbers!";
     }
 }
 ?>
@@ -54,17 +66,7 @@ function calculate($num1 = 0, $num2 = 0, $sign = "+") {
                 <input type="submit" value="Calculate" name="calculate">
             </form>
             <div class="answer">
-                <?php
-                    if (isset($_POST["calculate"])) {
-                        if (isset($_POST["num1"]) and isset($_POST["num2"])) {
-                            $num1 = $_POST["num1"];
-                            $num2 = $_POST["num2"];
-                            $sign = $_POST["sign"];
-
-                            calculate($num1, $num2, $sign);
-                        }
-                    }
-                ?>
+                <?php echo $answer;?>
             </div>
         </div>
     </body>
